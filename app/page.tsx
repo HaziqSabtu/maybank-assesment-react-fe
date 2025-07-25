@@ -6,9 +6,7 @@ import { useState } from "react";
 
 export default function PlacesApp() {
     const [searchQuery, setSearchQuery] = useState("");
-    const { suggestions, loading, error } = useAutocomplete(searchQuery);
-
-    const showSuggestions = false;
+    const { suggestions, loading } = useAutocomplete(searchQuery);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -18,7 +16,7 @@ export default function PlacesApp() {
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
                     isSearching={loading}
-                    showSuggestions={showSuggestions}
+                    suggestions={suggestions}
                 />
             </div>
         </div>

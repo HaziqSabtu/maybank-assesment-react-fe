@@ -2,15 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import useDebounce from "./useDebounce";
 import { PlacePrediction } from "@/types/PlaceApi";
 import { getSuggestions } from "@/temp/autocomplete";
+import { PlaceSuggestion } from "@/types/Suggestion";
 
 type AutocompleteResult = {
-    suggestions: PlacePrediction[];
+    suggestions: PlaceSuggestion[];
     loading: boolean;
     error: Error | null;
 };
 
 export function useAutocomplete(input: string): AutocompleteResult {
-    const [suggestions, setSuggestions] = useState<PlacePrediction[]>([]);
+    const [suggestions, setSuggestions] = useState<PlaceSuggestion[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
@@ -30,8 +31,8 @@ export function useAutocomplete(input: string): AutocompleteResult {
         getSuggestions()
             .then((data) => {
                 if (requestIdRef.current === currentRequestId) {
-                    const suggestions = data.suggestions.map(
-                        (suggestion) => suggestion.placePrediction
+                    const suggestions = data.suggestions.map((suggestion) =>
+                        mapper(suggestion.placePrediction)
                     );
                     setSuggestions(suggestions);
                 }
@@ -49,4 +50,12 @@ export function useAutocomplete(input: string): AutocompleteResult {
     }, [debouncedInput]);
 
     return { suggestions, loading, error };
+}
+
+function mapper(suggestion: PlacePrediction): PlaceSuggestion {
+    return {
+        name: suggestion.structuredFormat.mainText.text,
+        address: suggestion.structuredFormat.secondaryText.text,
+        id: suggestion.placeId,
+    };
 }
