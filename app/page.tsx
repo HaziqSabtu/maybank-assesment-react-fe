@@ -1,12 +1,13 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import SearchBox from "@/components/SearchBox";
+import { useAutocomplete } from "@/hooks/useAutoComplete";
 import { useState } from "react";
 
 export default function PlacesApp() {
     const [searchQuery, setSearchQuery] = useState("");
+    const { suggestions, loading, error } = useAutocomplete(searchQuery);
 
-    const isSearching = true;
     const showSuggestions = false;
 
     return (
@@ -16,7 +17,7 @@ export default function PlacesApp() {
                 <SearchBox
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
-                    isSearching={isSearching}
+                    isSearching={loading}
                     showSuggestions={showSuggestions}
                 />
             </div>
