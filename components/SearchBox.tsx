@@ -30,8 +30,12 @@ const SearchBox = ({
                         setSearchQuery(e.target.value);
                         setShowSuggestion(true);
                     }}
-                    onFocus={() => setShowSuggestion(true)}
-                    onBlur={() => setShowSuggestion(false)}
+                    onFocus={() =>
+                        searchQuery.length > 0 && setShowSuggestion(true)
+                    }
+                    onBlur={() =>
+                        setTimeout(() => setShowSuggestion(false), 200)
+                    }
                     className="pl-10 pr-4 py-3 text-lg"
                 />
 
