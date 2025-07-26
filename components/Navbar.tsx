@@ -1,5 +1,5 @@
-import { MapPin } from "lucide-react";
-import React from "react";
+import { MapPin, User } from "lucide-react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import {
     DropdownMenu,
@@ -7,11 +7,20 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-
-import currentUser from "@/temp/currentUser";
+import { Avatar, AvatarFallback } from "./ui/avatar";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import SignInModal from "./SignInModal";
+import { logout } from "@/features/auth/authSlice";
+import { getInitials } from "@/lib/initials";
 
 const Navbar = () => {
+    const dispatch = useAppDispatch();
+    const auth = useAppSelector((state) => state.auth);
+
+    const [showSignInModal, setShowSignInModal] = useState(false);
+
+    const initials = auth.username ? getInitials(auth.username) : "";
+
     return (
         <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,39 +33,49 @@ const Navbar = () => {
                             </span>
                         </div>
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    className="relative h-10 w-10 rounded-full"
+                    {auth.isAuthenticated ? (
+                        <div className="flex items-center space-x-4">
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button
+                                        variant="ghost"
+                                        className="relative h-10 w-10 rounded-full"
+                                    >
+                                        <Avatar className="h-10 w-10">
+                                            <AvatarFallback className="bg-yellow-500 text-white">
+                                                {initials}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent
+                                    className="w-56"
+                                    align="end"
+                                    forceMount
                                 >
-                                    <Avatar className="h-10 w-10">
-                                        {currentUser.avatar && (
-                                            <AvatarImage
-                                                src={currentUser.avatar}
-                                                alt={currentUser.name}
-                                            />
-                                        )}
-                                        <AvatarFallback className="bg-yellow-500 text-white">
-                                            {currentUser.initials}
-                                        </AvatarFallback>
-                                    </Avatar>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                                className="w-56"
-                                align="end"
-                                forceMount
-                            >
-                                <DropdownMenuItem>
-                                    <span>Sign out</span>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
+                                    <DropdownMenuItem
+                                        onClick={() => dispatch(logout())}
+                                    >
+                                        <span>Sign out</span>
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
+                    ) : (
+                        <Button
+                            onClick={() => setShowSignInModal(true)}
+                            className="flex items-center gap-2"
+                        >
+                            <User className="h-4 w-4" />
+                            Sign In
+                        </Button>
+                    )}
                 </div>
             </div>
+            <SignInModal
+                isOpen={showSignInModal}
+                onClose={() => setShowSignInModal(false)}
+            />
         </nav>
     );
 };

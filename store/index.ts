@@ -1,9 +1,11 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import placeDetailsReducer from "@/features/place/placeDetailsSlice";
 import searchHistoryReducer from "@/features/search/SearchHistorySlice";
+import authReducer from "@/features/auth/authSlice";
 
 export const store = configureStore({
     reducer: {
+        auth: authReducer,
         searchHistory: searchHistoryReducer,
         placeDetails: placeDetailsReducer,
     },
