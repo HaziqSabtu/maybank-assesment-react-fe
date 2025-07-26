@@ -25,7 +25,7 @@ const FavouriteCard = ({ isSelected, place }: Props) => {
 
     function handleSelectCard(id: string) {
         const newUrl = pathname + "?id=" + id;
-        router.push(newUrl);
+        router.push(newUrl, { scroll: false });
     }
 
     return (
