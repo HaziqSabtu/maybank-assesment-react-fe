@@ -3,411 +3,337 @@ import { data as autoCompleteData } from "./autocomplete";
 
 const data = [
     {
-        name: "places/ChIJQ_ZtFhS_QyIRK-q31N-jT2M",
-        id: "ChIJQ_ZtFhS_QyIRK-q31N-jT2M",
-        internationalPhoneNumber: "+1 212-555-1234",
-        formattedAddress: "1 Times Sq, New York, NY 10036, USA",
-        location: {
-            latitude: 40.758,
-            longitude: -73.9855,
-        },
-        rating: 4.7,
-        userRatingCount: 150000,
-        displayName: {
-            text: "Times Square",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Tourist Attraction",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJfR4oHhJ_QyIR0bJbQ1bN6Qk",
-        id: "ChIJfR4oHhJ_QyIR0bJbQ1bN6Qk",
-        internationalPhoneNumber: "+44 20 7987 6543",
-        formattedAddress: "Parliament Square, Westminster, London SW1P 3JX, UK",
-        location: {
-            latitude: 51.5008,
-            longitude: -0.1246,
-        },
-        rating: 4.6,
-        userRatingCount: 80000,
-        displayName: {
-            text: "Big Ben",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Landmark",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJ1e4W7L-pDTkR0rK9f8h2D9w",
-        id: "ChIJ1e4W7L-pDTkR0rK9f8h2D9w",
-        internationalPhoneNumber: "+81 3-5555-7890",
+        name: "places/ChIJLf8zWebR5zsRkVxdjd6rbKI",
+        id: "ChIJLf8zWebR5zsRkVxdjd6rbKI",
+        internationalPhoneNumber: "+91 22 2285 1876",
         formattedAddress:
-            "1-1, Marunouchi, Chiyoda City, Tokyo 100-8111, Japan",
+            "Soona Mahal, 143, Marine Dr, Churchgate, Mumbai, Maharashtra 400020, India",
         location: {
-            latitude: 35.6812,
-            longitude: 139.7671,
+            latitude: 18.9333915,
+            longitude: 72.823882099999992,
         },
-        rating: 4.5,
-        userRatingCount: 60000,
+        rating: 4.2,
+        userRatingCount: 25989,
         displayName: {
-            text: "Tokyo Imperial Palace",
+            text: "Pizza By The Bay",
             languageCode: "en",
         },
         primaryTypeDisplayName: {
-            text: "Historical Landmark",
+            text: "Italian Restaurant",
             languageCode: "en-US",
         },
     },
     {
-        name: "places/ChIJB4a_d_f8_0gR_J-F-z-f8_0g",
-        id: "ChIJB4a_d_f8_0gR_J-F-z-f8_0g",
-        internationalPhoneNumber: "+33 1 44 88 20 00",
-        formattedAddress: "Rue de Rivoli, 75001 Paris, France",
+        name: "places/ChIJ2ZVFCzIXrjsRU64njYB04RE",
+        id: "ChIJ2ZVFCzIXrjsRU64njYB04RE",
+        internationalPhoneNumber: "+91 89519 40444",
+        formattedAddress:
+            "No.3275/A, 12th Main Rd, HAL 2nd Stage, Ward 72, Domlur, Bengaluru, Karnataka 560038, India",
         location: {
-            latitude: 48.8606,
-            longitude: 2.3376,
+            latitude: 12.970002,
+            longitude: 77.6361044,
         },
         rating: 4.8,
-        userRatingCount: 200000,
+        userRatingCount: 5062,
         displayName: {
-            text: "Louvre Museum",
+            text: "Pizza 4P's Indiranagar",
             languageCode: "en",
         },
         primaryTypeDisplayName: {
-            text: "Art Museum",
+            text: "Italian Restaurant",
             languageCode: "en-US",
         },
     },
     {
-        name: "places/ChIJN1t_0rL9mR4R9t-r_t_0rL9m",
-        id: "ChIJN1t_0rL9mR4R9t-r_t_0rL9m",
-        internationalPhoneNumber: "+39 06 6988 4466",
+        name: "places/ChIJW3BnIA6pQjQRR5BYohped7A",
+        id: "ChIJW3BnIA6pQjQRR5BYohped7A",
         formattedAddress:
-            "Piazza San Pietro, 00120 Città del Vaticano, Vatican City",
+            "235, Taiwan, New Taipei City, Zhonghe District, Shuiyuan Rd, 102號光華街口萊爾富對面",
         location: {
-            latitude: 41.9022,
-            longitude: 12.4539,
+            latitude: 25.0035243,
+            longitude: 121.50593500000001,
+        },
+        rating: 4.4,
+        userRatingCount: 351,
+        displayName: {
+            text: "Pizza power",
+            languageCode: "en",
+        },
+        primaryTypeDisplayName: {
+            text: "Pizza Restaurant",
+            languageCode: "en-US",
+        },
+    },
+    {
+        name: "places/ChIJC-nWiTYvdTERGMJvRSoZ2f4",
+        id: "ChIJC-nWiTYvdTERGMJvRSoZ2f4",
+        internationalPhoneNumber: "+84 28 3622 0500",
+        formattedAddress:
+            "151b Hai Bà Trưng, Phường 6, Quận 3, Hồ Chí Minh 700000, Vietnam",
+        location: {
+            latitude: 10.7830429,
+            longitude: 106.69697269999999,
         },
         rating: 4.9,
-        userRatingCount: 180000,
+        userRatingCount: 16772,
         displayName: {
-            text: "St. Peter's Basilica",
+            text: "Pizza 4P's Hai Ba Trung",
             languageCode: "en",
         },
         primaryTypeDisplayName: {
-            text: "Religious Site",
+            text: "Pizza Restaurant",
             languageCode: "en-US",
         },
     },
     {
-        name: "places/ChIJx_t0_PzLmjgRLU2N-z-t0_PzL",
-        id: "ChIJx_t0_PzLmjgRLU2N-z-t0_PzL",
-        internationalPhoneNumber: "+61 2 9250 7111",
-        formattedAddress: "Bennelong Point, Sydney NSW 2000, Australia",
-        location: {
-            latitude: -33.8568,
-            longitude: 151.2153,
-        },
-        rating: 4.7,
-        userRatingCount: 120000,
-        displayName: {
-            text: "Sydney Opera House",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Performing Arts Venue",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJY0D_Yf3bDTkRk-q31N-jT2M",
-        id: "ChIJY0D_Yf3bDTkRk-q31N-jT2M",
-        internationalPhoneNumber: "+55 21 2285-1234",
+        name: "places/ChIJq4DSNt0_K4gR5BFOlAqpcb8",
+        id: "ChIJq4DSNt0_K4gR5BFOlAqpcb8",
+        internationalPhoneNumber: "+1 905-203-0011",
         formattedAddress:
-            "Rua do Catete, 153 - Catete, Rio de Janeiro - RJ, 22220-000, Brazil",
+            "7910 Hurontario St #18, Brampton, ON L6Y 0P6, Canada",
         location: {
-            latitude: -22.9255,
-            longitude: -43.1784,
-        },
-        rating: 4.5,
-        userRatingCount: 45000,
-        displayName: {
-            text: "Christ the Redeemer",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Statue",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJX7bVq7aKDTkRkWd-z-f8_0g",
-        id: "ChIJX7bVq7aKDTkRkWd-z-f8_0g",
-        internationalPhoneNumber: "+20 2 27248888",
-        formattedAddress: "Al-Haram, Giza Governorate, Egypt",
-        location: {
-            latitude: 29.9792,
-            longitude: 31.1342,
-        },
-        rating: 4.6,
-        userRatingCount: 90000,
-        displayName: {
-            text: "Pyramids of Giza",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Ancient Ruin",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJd-f8_0gR_J-F-z-f8_0g",
-        id: "ChIJd-f8_0gR_J-F-z-f8_0g",
-        internationalPhoneNumber: "+86 10 8408 8688",
-        formattedAddress: "Jingshan Front St, Dongcheng, Beijing, China",
-        location: {
-            latitude: 39.9164,
-            longitude: 116.3972,
-        },
-        rating: 4.6,
-        userRatingCount: 75000,
-        displayName: {
-            text: "Forbidden City",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Palace",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJS_kS9r_jDTkRLU2N-z-t0_PzL",
-        id: "ChIJS_kS9r_jDTkRLU2N-z-t0_PzL",
-        internationalPhoneNumber: "+91 11 2336 5358",
-        formattedAddress:
-            "Dharm Marg, Diplomatic Enclave, Chanakyapuri, New Delhi, Delhi 110021, India",
-        location: {
-            latitude: 28.6129,
-            longitude: 77.2295,
-        },
-        rating: 4.6,
-        userRatingCount: 55000,
-        displayName: {
-            text: "India Gate",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "War Memorial",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJv4u9d3yQDTkRLU2N-z-t0_PzL",
-        id: "ChIJv4u9d3yQDTkRLU2N-z-t0_PzL",
-        internationalPhoneNumber: "+7 495 695-37-76",
-        formattedAddress: "Red Square, Moscow, Russia",
-        location: {
-            latitude: 55.7539,
-            longitude: 37.6204,
-        },
-        rating: 4.7,
-        userRatingCount: 100000,
-        displayName: {
-            text: "Red Square",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "City Square",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJY0D_Yf3bDTkRk-q31N-jT2M",
-        id: "ChIJY0D_Yf3bDTkRk-q31N-jT2M",
-        internationalPhoneNumber: "+52 55 5250 8281",
-        formattedAddress:
-            "Av. Paseo de la Reforma, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX, Mexico",
-        location: {
-            latitude: 19.4265,
-            longitude: -99.1678,
-        },
-        rating: 4.6,
-        userRatingCount: 30000,
-        displayName: {
-            text: "Angel of Independence",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Monument",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJr0_V2RjS_0gRMJ-F-z-f8_0g",
-        id: "ChIJr0_V2RjS_0gRMJ-F-z-f8_0g",
-        internationalPhoneNumber: "+49 30 20050",
-        formattedAddress: "Platz der Republik 1, 11011 Berlin, Germany",
-        location: {
-            latitude: 52.5186,
-            longitude: 13.3762,
-        },
-        rating: 4.7,
-        userRatingCount: 65000,
-        displayName: {
-            text: "Reichstag Building",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Government Building",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJl8Y-eD-hDTkR8Wd-z-f8_0g",
-        id: "ChIJl8Y-eD-hDTkR8Wd-z-f8_0g",
-        internationalPhoneNumber: "+82 2-3700-1114",
-        formattedAddress: "161 Sajik-ro, Jongno-gu, Seoul, South Korea",
-        location: {
-            latitude: 37.5796,
-            longitude: 126.977,
-        },
-        rating: 4.6,
-        userRatingCount: 40000,
-        displayName: {
-            text: "Gyeongbokgung Palace",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Palace",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJx_t0_PzLmjgRLU2N-z-t0_PzL",
-        id: "ChIJx_t0_PzLmjgRLU2N-z-t0_PzL",
-        internationalPhoneNumber: "+65 6332 5000",
-        formattedAddress: "1 Esplanade Dr, Singapore 038981",
-        location: {
-            latitude: 1.2882,
-            longitude: 103.858,
-        },
-        rating: 4.6,
-        userRatingCount: 35000,
-        displayName: {
-            text: "Marina Bay Sands",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Hotel",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJX7bVq7aKDTkRkWd-z-f8_0g",
-        id: "ChIJX7bVq7aKDTkRkWd-z-f8_0g",
-        internationalPhoneNumber: "+971 4 8888888",
-        formattedAddress:
-            "1 Sheikh Mohammed bin Rashid Blvd - Downtown Dubai - Dubai - United Arab Emirates",
-        location: {
-            latitude: 25.1972,
-            longitude: 55.2744,
-        },
-        rating: 4.7,
-        userRatingCount: 160000,
-        displayName: {
-            text: "Burj Khalifa",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Skyscraper",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJN1t_0rL9mR4R9t-r_t_0rL9m",
-        id: "ChIJN1t_0rL9mR4R9t-r_t_0rL9m",
-        internationalPhoneNumber: "+81 422-47-8101",
-        formattedAddress:
-            "1-1-83 Inokashira-cho, Musashino-shi, Tokyo 180-0005, Japan",
-        location: {
-            latitude: 35.6961,
-            longitude: 139.5704,
-        },
-        rating: 4.5,
-        userRatingCount: 28000,
-        displayName: {
-            text: "Ghibli Museum",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Museum",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJd-f8_0gR_J-F-z-f8_0g",
-        id: "ChIJd-f8_0gR_J-F-z-f8_0g",
-        internationalPhoneNumber: "+66 2 224 3290",
-        formattedAddress:
-            "Na Phra Lan Rd, Phra Borom Maha Ratchawang, Phra Nakhon, Bangkok 10200, Thailand",
-        location: {
-            latitude: 13.75,
-            longitude: 100.4934,
-        },
-        rating: 4.6,
-        userRatingCount: 70000,
-        displayName: {
-            text: "Grand Palace",
-            languageCode: "en",
-        },
-        primaryTypeDisplayName: {
-            text: "Royal Palace",
-            languageCode: "en-US",
-        },
-    },
-    {
-        name: "places/ChIJv4u9d3yQDTkRLU2N-z-t0_PzL",
-        id: "ChIJv4u9d3yQDTkRLU2N-z-t0_PzL",
-        internationalPhoneNumber: "+1 415-555-7890",
-        formattedAddress: "Golden Gate Bridge, San Francisco, CA, USA",
-        location: {
-            latitude: 37.8199,
-            longitude: -122.4783,
+            latitude: 43.6636437,
+            longitude: -79.7321441,
         },
         rating: 4.8,
-        userRatingCount: 110000,
+        userRatingCount: 1059,
         displayName: {
-            text: "Golden Gate Bridge",
+            text: "Pizza CraviN (Brampton)",
             languageCode: "en",
         },
         primaryTypeDisplayName: {
-            text: "Bridge",
+            text: "Pizza Restaurant",
             languageCode: "en-US",
         },
     },
     {
-        name: "places/ChIJQ_ZtFhS_QyIRK-q31N-jT2M",
-        id: "ChIJQ_ZtFhS_QyIRK-q31N-jT2M",
-        internationalPhoneNumber: "+34 913 30 24 00",
-        formattedAddress: "Plaza de la Lealtad, 5, 28014 Madrid, Spain",
+        name: "places/ChIJsxSZsJDS3TsRXCEonV2EB8s",
+        id: "ChIJsxSZsJDS3TsRXCEonV2EB8s",
+        formattedAddress: "Nashik, Maharashtra, India",
         location: {
-            latitude: 40.4138,
-            longitude: -3.6921,
+            latitude: 19.9993217,
+            longitude: 73.790018800000013,
         },
-        rating: 4.7,
-        userRatingCount: 42000,
         displayName: {
-            text: "Prado Museum",
+            text: "Nashik",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJi9nuRgiYHkcR421AlKwpIfA",
+        id: "ChIJi9nuRgiYHkcR421AlKwpIfA",
+        formattedAddress: "05-190 Nasielsk, Poland",
+        location: {
+            latitude: 52.589909999999996,
+            longitude: 20.80568,
+        },
+        displayName: {
+            text: "Nasielsk",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJq52-7AJZaTkR96wMc6qjAV0",
+        id: "ChIJq52-7AJZaTkR96wMc6qjAV0",
+        formattedAddress: "Nasirabad, Rajasthan 305601, India",
+        location: {
+            latitude: 26.3017564,
+            longitude: 74.7340627,
+        },
+        displayName: {
+            text: "Nasirabad",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJWfwHc0AMXUcR4MorhlCtAAQ",
+        id: "ChIJWfwHc0AMXUcR4MorhlCtAAQ",
+        formattedAddress: "31500, Našice, Croatia",
+        location: {
+            latitude: 45.4932805,
+            longitude: 18.0975888,
+        },
+        displayName: {
+            text: "Našice",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJyT_j-q_q3TsRpuqorfro2ho",
+        id: "ChIJyT_j-q_q3TsRpuqorfro2ho",
+        formattedAddress: "Nashik Road, Nashik, Maharashtra, India",
+        location: {
+            latitude: 19.9728896,
+            longitude: 73.8229516,
+        },
+        displayName: {
+            text: "Nashik Road",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJkVOvMdpJzDERIIpbDIqX7gY",
+        id: "ChIJkVOvMdpJzDERIIpbDIqX7gY",
+        internationalPhoneNumber: "+60 11-6277 1957",
+        formattedAddress:
+            "Jalan Stadium, Presint Merdeka 118, 50118 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+        location: {
+            latitude: 3.1393242999999997,
+            longitude: 101.7008106,
+        },
+        rating: 4.1,
+        userRatingCount: 1116,
+        displayName: {
+            text: "Stadium Merdeka",
             languageCode: "en",
         },
         primaryTypeDisplayName: {
-            text: "Art Museum",
+            text: "Stadium",
             languageCode: "en-US",
+        },
+    },
+    {
+        name: "places/ChIJRd6Qa5ZKzDERpnaQSpbCpDk",
+        id: "ChIJRd6Qa5ZKzDERpnaQSpbCpDk",
+        internationalPhoneNumber: "+60 3-8992 0888",
+        formattedAddress:
+            "Jalan Barat, Bukit Jalil, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+        location: {
+            latitude: 3.054486,
+            longitude: 101.6912206,
+        },
+        rating: 4.5,
+        userRatingCount: 12173,
+        displayName: {
+            text: "National Stadium Bukit Jalil",
+            languageCode: "en",
+        },
+        primaryTypeDisplayName: {
+            text: "Stadium",
+            languageCode: "en-US",
+        },
+    },
+    {
+        name: "places/ChIJt__YxmYZ2jERKih8lynJnUY",
+        id: "ChIJt__YxmYZ2jERKih8lynJnUY",
+        formattedAddress: "3 Stadium Walk, Singapore 397692",
+        location: {
+            latitude: 1.3028119999999999,
+            longitude: 103.875334,
+        },
+        rating: 4.6,
+        userRatingCount: 421,
+        displayName: {
+            text: "Stadium MRT Station (CC6)",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJd0b0EWvxaS4R8Hb9SpKttuA",
+        id: "ChIJd0b0EWvxaS4R8Hb9SpKttuA",
+        internationalPhoneNumber: "+62 21 5734070",
+        formattedAddress:
+            "Jl. Pintu Satu Senayan, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270, Indonesia",
+        location: {
+            latitude: -6.2183486,
+            longitude: 106.8034012,
+        },
+        rating: 4.8,
+        userRatingCount: 55474,
+        displayName: {
+            text: "Komplek Gelora Bung Karno",
+            languageCode: "id",
+        },
+        primaryTypeDisplayName: {
+            text: "Sports Complex",
+            languageCode: "en-US",
+        },
+    },
+    {
+        name: "places/ChIJm4WvuE7jAGARbdCr0f3bdcE",
+        id: "ChIJm4WvuE7jAGARbdCr0f3bdcE",
+        internationalPhoneNumber: "+81 6-6875-3377",
+        formattedAddress: "3-3 Senribanpakukōen, Suita, Osaka 565-0826, Japan",
+        location: {
+            latitude: 34.8026857,
+            longitude: 135.5381712,
+        },
+        rating: 4.4,
+        userRatingCount: 3459,
+        displayName: {
+            text: "Panasonic Stadium Suita",
+            languageCode: "en",
+        },
+        primaryTypeDisplayName: {
+            text: "Stadium",
+            languageCode: "en-US",
+        },
+    },
+    {
+        name: "places/ChIJ0-cIvSo2zDERmWzYQPUfLiM",
+        id: "ChIJ0-cIvSo2zDERmWzYQPUfLiM",
+        formattedAddress:
+            "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+        location: {
+            latitude: 3.1319196999999996,
+            longitude: 101.6840589,
+        },
+        displayName: {
+            text: "Federal Territory of Kuala Lumpur",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJL4Zul54JtzERkiQjy4XuwBs",
+        id: "ChIJL4Zul54JtzERkiQjy4XuwBs",
+        formattedAddress: "Kuala Terengganu, Terengganu, Malaysia",
+        location: {
+            latitude: 5.3283230999999995,
+            longitude: 103.14121569999999,
+        },
+        displayName: {
+            text: "Kuala Terengganu",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJ5-rvAcdJzDERfSgcL1uO2fQ",
+        id: "ChIJ5-rvAcdJzDERfSgcL1uO2fQ",
+        formattedAddress:
+            "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+        location: {
+            latitude: 3.1499222,
+            longitude: 101.6944619,
+        },
+        displayName: {
+            text: "Kuala Lumpur",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJ1WJ2bOi8yjERxbofruAstSQ",
+        id: "ChIJ1WJ2bOi8yjERxbofruAstSQ",
+        formattedAddress: "Kuala Kangsar, Perak, Malaysia",
+        location: {
+            latitude: 4.7722057,
+            longitude: 100.9420703,
+        },
+        displayName: {
+            text: "Kuala Kangsar",
+            languageCode: "en",
+        },
+    },
+    {
+        name: "places/ChIJL4PyKDOLzDERHYHAzC9YBdw",
+        id: "ChIJL4PyKDOLzDERHYHAzC9YBdw",
+        formattedAddress: "Kuala Selangor, Selangor, Malaysia",
+        location: {
+            latitude: 3.3392353999999997,
+            longitude: 101.2497808,
+        },
+        displayName: {
+            text: "Kuala Selangor",
+            languageCode: "en",
         },
     },
 ];

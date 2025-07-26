@@ -4,420 +4,645 @@ export const data: PlacePredictionResponse = {
     suggestions: [
         {
             placePrediction: {
-                place: "places/chij001",
-                placeId: "chij001",
+                place: "places/ChIJLf8zWebR5zsRkVxdjd6rbKI",
+                placeId: "ChIJLf8zWebR5zsRkVxdjd6rbKI",
                 text: {
-                    text: "La Bella Pizza, 12 Via Roma, Rome, Italy",
-                    matches: [{ endOffset: 2 }],
+                    text: "Pizza By The Bay, Marine Drive, Churchgate, Mumbai, Maharashtra, India",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "La Bella Pizza",
-                        matches: [{ endOffset: 2 }],
+                        text: "Pizza By The Bay",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "12 Via Roma, Rome, Italy",
+                        text: "Marine Drive, Churchgate, Mumbai, Maharashtra, India",
                     },
                 },
                 types: [
-                    "italian_restaurant",
-                    "restaurant",
                     "food",
+                    "italian_restaurant",
+                    "breakfast_restaurant",
                     "establishment",
+                    "point_of_interest",
+                    "pizza_restaurant",
+                    "restaurant",
                 ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij002",
-                placeId: "chij002",
+                place: "places/ChIJ2ZVFCzIXrjsRU64njYB04RE",
+                placeId: "ChIJ2ZVFCzIXrjsRU64njYB04RE",
                 text: {
-                    text: "Deep Dish Central, 77 Michigan Ave, Chicago, IL, USA",
-                    matches: [{ endOffset: 4 }],
+                    text: "Pizza 4P's Indiranagar, 12th Main Road, HAL 2nd Stage, Ward 72, Domlur, Bengaluru, Karnataka, India",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Deep Dish Central",
-                        matches: [{ endOffset: 4 }],
+                        text: "Pizza 4P's Indiranagar",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "77 Michigan Ave, Chicago, IL, USA",
+                        text: "12th Main Road, HAL 2nd Stage, Ward 72, Domlur, Bengaluru, Karnataka, India",
                     },
                 },
-                types: ["pizza_restaurant", "restaurant", "point_of_interest"],
+                types: [
+                    "point_of_interest",
+                    "restaurant",
+                    "food",
+                    "establishment",
+                    "italian_restaurant",
+                ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij003",
-                placeId: "chij003",
+                place: "places/ChIJW3BnIA6pQjQRR5BYohped7A",
+                placeId: "ChIJW3BnIA6pQjQRR5BYohped7A",
                 text: {
-                    text: "Tokyo Pizza Lounge, 5-3-1 Roppongi, Tokyo, Japan",
-                    matches: [{ endOffset: 5 }],
+                    text: "Pizza power, 水源路 Zhonghe District, New Taipei City, Taiwan",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Tokyo Pizza Lounge",
-                        matches: [{ endOffset: 5 }],
+                        text: "Pizza power",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "5-3-1 Roppongi, Tokyo, Japan",
+                        text: "水源路 Zhonghe District, New Taipei City, Taiwan",
                     },
                 },
                 types: [
+                    "establishment",
+                    "food",
+                    "restaurant",
+                    "point_of_interest",
+                    "pizza_restaurant",
+                ],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJC-nWiTYvdTERGMJvRSoZ2f4",
+                placeId: "ChIJC-nWiTYvdTERGMJvRSoZ2f4",
+                text: {
+                    text: "Pizza 4P's Hai Ba Trung, Hai Bà Trưng, Võ Thị Sáu, District 3, Ho Chi Minh City, Vietnam",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Pizza 4P's Hai Ba Trung",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Hai Bà Trưng, Võ Thị Sáu, District 3, Ho Chi Minh City, Vietnam",
+                    },
+                },
+                types: [
+                    "establishment",
+                    "restaurant",
+                    "food",
                     "japanese_restaurant",
                     "meal_takeaway",
-                    "food",
-                    "establishment",
+                    "point_of_interest",
+                    "pizza_restaurant",
+                    "fine_dining_restaurant",
                 ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij004",
-                placeId: "chij004",
+                place: "places/ChIJq4DSNt0_K4gR5BFOlAqpcb8",
+                placeId: "ChIJq4DSNt0_K4gR5BFOlAqpcb8",
                 text: {
-                    text: "Pizza Nova, 88 King Street West, Toronto, Canada",
-                    matches: [{ endOffset: 5 }],
+                    text: "Pizza CraviN (Brampton), Hurontario Street, Brampton, ON, Canada",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Pizza Nova",
-                        matches: [{ endOffset: 5 }],
+                        text: "Pizza CraviN (Brampton)",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "88 King Street West, Toronto, Canada",
-                    },
-                },
-                types: ["restaurant", "pizza_restaurant", "establishment"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij005",
-                placeId: "chij005",
-                text: {
-                    text: "Slice & Dice, 19 George Street, Sydney, Australia",
-                    matches: [{ endOffset: 5 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Slice & Dice",
-                        matches: [{ endOffset: 5 }],
-                    },
-                    secondaryText: {
-                        text: "19 George Street, Sydney, Australia",
-                    },
-                },
-                types: ["food", "pizza_restaurant", "establishment"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij006",
-                placeId: "chij006",
-                text: {
-                    text: "Margherita House, 1 Rue de Paris, Lyon, France",
-                    matches: [{ endOffset: 5 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Margherita House",
-                        matches: [{ endOffset: 5 }],
-                    },
-                    secondaryText: {
-                        text: "1 Rue de Paris, Lyon, France",
+                        text: "Hurontario Street, Brampton, ON, Canada",
                     },
                 },
                 types: [
+                    "establishment",
                     "restaurant",
-                    "italian_restaurant",
+                    "food",
+                    "pizza_restaurant",
                     "point_of_interest",
                 ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij007",
-                placeId: "chij007",
+                place: "places/ChIJsxSZsJDS3TsRXCEonV2EB8s",
+                placeId: "ChIJsxSZsJDS3TsRXCEonV2EB8s",
                 text: {
-                    text: "New York Pizza Hub, 55 Broadway, NYC, USA",
-                    matches: [{ endOffset: 3 }],
+                    text: "Nasik, Maharashtra, India",
+                    matches: [
+                        {
+                            endOffset: 4,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "New York Pizza Hub",
-                        matches: [{ endOffset: 3 }],
+                        text: "Nasik",
+                        matches: [
+                            {
+                                endOffset: 4,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "55 Broadway, NYC, USA",
+                        text: "Maharashtra, India",
                     },
                 },
-                types: ["restaurant", "food", "pizza_restaurant"],
+                types: ["geocode", "political", "locality"],
             },
         },
         {
             placePrediction: {
-                place: "places/chij008",
-                placeId: "chij008",
+                place: "places/ChIJi9nuRgiYHkcR421AlKwpIfA",
+                placeId: "ChIJi9nuRgiYHkcR421AlKwpIfA",
                 text: {
-                    text: "Crust & Craft, 9 Albert Embankment, London, UK",
-                    matches: [{ endOffset: 3 }],
+                    text: "Nasielsk, Poland",
+                    matches: [
+                        {
+                            endOffset: 4,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Crust & Craft",
-                        matches: [{ endOffset: 3 }],
+                        text: "Nasielsk",
+                        matches: [
+                            {
+                                endOffset: 4,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "9 Albert Embankment, London, UK",
+                        text: "Poland",
                     },
                 },
-                types: ["fine_dining_restaurant", "food", "establishment"],
+                types: ["locality", "geocode", "political"],
             },
         },
         {
             placePrediction: {
-                place: "places/chij009",
-                placeId: "chij009",
+                place: "places/ChIJq52-7AJZaTkR96wMc6qjAV0",
+                placeId: "ChIJq52-7AJZaTkR96wMc6qjAV0",
                 text: {
-                    text: "Pizza Nirvana, 42 Orchard Road, Singapore",
-                    matches: [{ endOffset: 3 }],
+                    text: "Nasirabad, Rajasthan, India",
+                    matches: [
+                        {
+                            endOffset: 4,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Pizza Nirvana",
-                        matches: [{ endOffset: 3 }],
+                        text: "Nasirabad",
+                        matches: [
+                            {
+                                endOffset: 4,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "42 Orchard Road, Singapore",
+                        text: "Rajasthan, India",
                     },
                 },
-                types: ["restaurant", "pizza_restaurant", "point_of_interest"],
+                types: ["political", "locality", "geocode"],
             },
         },
         {
             placePrediction: {
-                place: "places/chij010",
-                placeId: "chij010",
+                place: "places/ChIJWfwHc0AMXUcR4MorhlCtAAQ",
+                placeId: "ChIJWfwHc0AMXUcR4MorhlCtAAQ",
                 text: {
-                    text: "Napoli Express, 8 Placa de Catalunya, Barcelona, Spain",
-                    matches: [{ endOffset: 4 }],
+                    text: "Našice, Croatia",
+                    matches: [
+                        {
+                            endOffset: 4,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Napoli Express",
-                        matches: [{ endOffset: 4 }],
+                        text: "Našice",
+                        matches: [
+                            {
+                                endOffset: 4,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "8 Placa de Catalunya, Barcelona, Spain",
+                        text: "Croatia",
                     },
                 },
-                types: ["food", "establishment", "italian_restaurant"],
+                types: ["locality", "geocode", "political"],
             },
         },
         {
             placePrediction: {
-                place: "places/chij011",
-                placeId: "chij011",
+                place: "places/ChIJyT_j-q_q3TsRpuqorfro2ho",
+                placeId: "ChIJyT_j-q_q3TsRpuqorfro2ho",
                 text: {
-                    text: "Pizza Hanoi, 3 Le Duan Street, Hanoi, Vietnam",
-                    matches: [{ endOffset: 3 }],
+                    text: "Nasik Road, Nashik, Maharashtra, India",
+                    matches: [
+                        {
+                            endOffset: 4,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Pizza Hanoi",
-                        matches: [{ endOffset: 3 }],
+                        text: "Nasik Road",
+                        matches: [
+                            {
+                                endOffset: 4,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "3 Le Duan Street, Hanoi, Vietnam",
-                    },
-                },
-                types: ["restaurant", "meal_takeaway", "establishment"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij012",
-                placeId: "chij012",
-                text: {
-                    text: "Vesuvio Pizza Bar, 17 Bourke Street, Melbourne, Australia",
-                    matches: [{ endOffset: 3 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Vesuvio Pizza Bar",
-                        matches: [{ endOffset: 3 }],
-                    },
-                    secondaryText: {
-                        text: "17 Bourke Street, Melbourne, Australia",
-                    },
-                },
-                types: ["pizza_restaurant", "food", "establishment"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij013",
-                placeId: "chij013",
-                text: {
-                    text: "Rustico, 210 Rua Augusta, São Paulo, Brazil",
-                    matches: [{ endOffset: 2 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Rustico",
-                        matches: [{ endOffset: 2 }],
-                    },
-                    secondaryText: {
-                        text: "210 Rua Augusta, São Paulo, Brazil",
-                    },
-                },
-                types: ["restaurant", "food", "italian_restaurant"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij014",
-                placeId: "chij014",
-                text: {
-                    text: "Pizzanada, 88 Artz Pedregal, CDMX, Mexico",
-                    matches: [{ endOffset: 3 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Pizzanada",
-                        matches: [{ endOffset: 3 }],
-                    },
-                    secondaryText: {
-                        text: "88 Artz Pedregal, CDMX, Mexico",
-                    },
-                },
-                types: ["food", "restaurant", "pizza_restaurant"],
-            },
-        },
-        {
-            placePrediction: {
-                place: "places/chij015",
-                placeId: "chij015",
-                text: {
-                    text: "Pizzeria Amore, 44 Karl Johans Gate, Oslo, Norway",
-                    matches: [{ endOffset: 4 }],
-                },
-                structuredFormat: {
-                    mainText: {
-                        text: "Pizzeria Amore",
-                        matches: [{ endOffset: 4 }],
-                    },
-                    secondaryText: {
-                        text: "44 Karl Johans Gate, Oslo, Norway",
+                        text: "Nashik, Maharashtra, India",
                     },
                 },
                 types: [
-                    "restaurant",
-                    "fine_dining_restaurant",
-                    "establishment",
+                    "sublocality",
+                    "geocode",
+                    "political",
+                    "sublocality_level_1",
                 ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij016",
-                placeId: "chij016",
+                place: "places/ChIJkVOvMdpJzDERIIpbDIqX7gY",
+                placeId: "ChIJkVOvMdpJzDERIIpbDIqX7gY",
                 text: {
-                    text: "Pizza Works, 1 Sheikh Zayed Road, Dubai, UAE",
-                    matches: [{ endOffset: 2 }],
+                    text: "Stadium Merdeka, Jalan Stadium, Presint Merdeka 118, Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 7,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Pizza Works",
-                        matches: [{ endOffset: 2 }],
+                        text: "Stadium Merdeka",
+                        matches: [
+                            {
+                                endOffset: 7,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "1 Sheikh Zayed Road, Dubai, UAE",
+                        text: "Jalan Stadium, Presint Merdeka 118, Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
                     },
                 },
-                types: ["establishment", "pizza_restaurant", "restaurant"],
+                types: [
+                    "sports_activity_location",
+                    "establishment",
+                    "event_venue",
+                    "point_of_interest",
+                    "stadium",
+                    "sports_complex",
+                ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij017",
-                placeId: "chij017",
+                place: "places/ChIJRd6Qa5ZKzDERpnaQSpbCpDk",
+                placeId: "ChIJRd6Qa5ZKzDERpnaQSpbCpDk",
                 text: {
-                    text: "Crust Republic, 18 Orchard Link, Singapore",
-                    matches: [{ endOffset: 3 }],
+                    text: "Stadium Nasional Bukit Jalil, Jalan Barat, Bukit Jalil, Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 7,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Crust Republic",
-                        matches: [{ endOffset: 3 }],
+                        text: "Stadium Nasional Bukit Jalil",
+                        matches: [
+                            {
+                                endOffset: 7,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "18 Orchard Link, Singapore",
+                        text: "Jalan Barat, Bukit Jalil, Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
                     },
                 },
-                types: ["restaurant", "food", "point_of_interest"],
+                types: [
+                    "point_of_interest",
+                    "event_venue",
+                    "concert_hall",
+                    "establishment",
+                    "sports_activity_location",
+                    "sports_complex",
+                    "auditorium",
+                    "stadium",
+                ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij018",
-                placeId: "chij018",
+                place: "places/ChIJt__YxmYZ2jERKih8lynJnUY",
+                placeId: "ChIJt__YxmYZ2jERKih8lynJnUY",
                 text: {
-                    text: "Panino Pizza, 12 O'Connell Street, Dublin, Ireland",
-                    matches: [{ endOffset: 3 }],
+                    text: "Stadium Walk, Stadium MRT Station (CC6), Singapore",
+                    matches: [
+                        {
+                            startOffset: 14,
+                            endOffset: 21,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Panino Pizza",
-                        matches: [{ endOffset: 3 }],
+                        text: "Stadium MRT Station (CC6)",
+                        matches: [
+                            {
+                                endOffset: 7,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "12 O'Connell Street, Dublin, Ireland",
+                        text: "Stadium Walk, Singapore",
                     },
                 },
-                types: ["restaurant", "meal_takeaway", "pizza_restaurant"],
+                types: ["establishment", "point_of_interest"],
             },
         },
         {
             placePrediction: {
-                place: "places/chij019",
-                placeId: "chij019",
+                place: "places/ChIJd0b0EWvxaS4R8Hb9SpKttuA",
+                placeId: "ChIJd0b0EWvxaS4R8Hb9SpKttuA",
                 text: {
-                    text: "Bella Napoli, 45 King Street, Auckland, New Zealand",
-                    matches: [{ endOffset: 3 }],
+                    text: "Stadium Gelora Bung Karno, Jalan Pintu Satu Senayan, Gelora, Central Jakarta City, Jakarta, Indonesia",
+                    matches: [
+                        {
+                            endOffset: 7,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Bella Napoli",
-                        matches: [{ endOffset: 3 }],
+                        text: "Stadium Gelora Bung Karno",
+                        matches: [
+                            {
+                                endOffset: 7,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "45 King Street, Auckland, New Zealand",
+                        text: "Jalan Pintu Satu Senayan, Gelora, Central Jakarta City, Jakarta, Indonesia",
                     },
                 },
-                types: ["pizza_restaurant", "restaurant", "establishment"],
+                types: [
+                    "event_venue",
+                    "establishment",
+                    "sports_activity_location",
+                    "point_of_interest",
+                    "stadium",
+                    "sports_complex",
+                ],
             },
         },
         {
             placePrediction: {
-                place: "places/chij020",
-                placeId: "chij020",
+                place: "places/ChIJm4WvuE7jAGARbdCr0f3bdcE",
+                placeId: "ChIJm4WvuE7jAGARbdCr0f3bdcE",
                 text: {
-                    text: "Red Oven, 100 Sukhumvit Road, Bangkok, Thailand",
-                    matches: [{ endOffset: 3 }],
+                    text: "Panasonic Stadium Suita, 3-3 Senribanpakukōen, Suita, Osaka, Japan",
+                    matches: [
+                        {
+                            startOffset: 10,
+                            endOffset: 17,
+                        },
+                        {
+                            startOffset: 25,
+                            endOffset: 28,
+                        },
+                    ],
                 },
                 structuredFormat: {
                     mainText: {
-                        text: "Red Oven",
-                        matches: [{ endOffset: 3 }],
+                        text: "Panasonic Stadium Suita",
+                        matches: [
+                            {
+                                startOffset: 10,
+                                endOffset: 17,
+                            },
+                        ],
                     },
                     secondaryText: {
-                        text: "100 Sukhumvit Road, Bangkok, Thailand",
+                        text: "3-3 Senribanpakukōen, Suita, Osaka, Japan",
+                        matches: [
+                            {
+                                endOffset: 3,
+                            },
+                        ],
                     },
                 },
-                types: ["food", "establishment", "restaurant"],
+                types: [
+                    "point_of_interest",
+                    "sports_activity_location",
+                    "stadium",
+                    "establishment",
+                    "event_venue",
+                    "sports_complex",
+                    "athletic_field",
+                ],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJ0-cIvSo2zDERmWzYQPUfLiM",
+                placeId: "ChIJ0-cIvSo2zDERmWzYQPUfLiM",
+                text: {
+                    text: "Kuala Lumpur, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Kuala Lumpur",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Malaysia",
+                    },
+                },
+                types: ["administrative_area_level_1", "political", "geocode"],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJL4Zul54JtzERkiQjy4XuwBs",
+                placeId: "ChIJL4Zul54JtzERkiQjy4XuwBs",
+                text: {
+                    text: "Kuala Terengganu, Terengganu, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Kuala Terengganu",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Terengganu, Malaysia",
+                    },
+                },
+                types: ["locality", "geocode", "political"],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJ5-rvAcdJzDERfSgcL1uO2fQ",
+                placeId: "ChIJ5-rvAcdJzDERfSgcL1uO2fQ",
+                text: {
+                    text: "Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Kuala Lumpur",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Federal Territory of Kuala Lumpur, Malaysia",
+                    },
+                },
+                types: ["locality", "geocode", "political"],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJ1WJ2bOi8yjERxbofruAstSQ",
+                placeId: "ChIJ1WJ2bOi8yjERxbofruAstSQ",
+                text: {
+                    text: "Kuala Kangsar, Perak, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Kuala Kangsar",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Perak, Malaysia",
+                    },
+                },
+                types: ["political", "geocode", "locality"],
+            },
+        },
+        {
+            placePrediction: {
+                place: "places/ChIJL4PyKDOLzDERHYHAzC9YBdw",
+                placeId: "ChIJL4PyKDOLzDERHYHAzC9YBdw",
+                text: {
+                    text: "Kuala Selangor, Selangor, Malaysia",
+                    matches: [
+                        {
+                            endOffset: 5,
+                        },
+                    ],
+                },
+                structuredFormat: {
+                    mainText: {
+                        text: "Kuala Selangor",
+                        matches: [
+                            {
+                                endOffset: 5,
+                            },
+                        ],
+                    },
+                    secondaryText: {
+                        text: "Selangor, Malaysia",
+                    },
+                },
+                types: ["political", "geocode", "locality"],
             },
         },
     ],

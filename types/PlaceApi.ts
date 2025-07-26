@@ -4,7 +4,8 @@ export const MatchedTextSchema = z.object({
     text: z.string(),
     matches: z.array(
         z.object({
-            endOffset: z.number(),
+            startOffset: z.number().optional(),
+            endOffset: z.number().optional(),
         })
     ),
 });
@@ -17,6 +18,13 @@ export const PlacePredictionSchema = z.object({
         mainText: MatchedTextSchema,
         secondaryText: z.object({
             text: z.string(),
+            matches: z
+                .array(
+                    z.object({
+                        endOffset: z.number().optional(),
+                    })
+                )
+                .optional(),
         }),
     }),
     types: z.array(z.string()),
