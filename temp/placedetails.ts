@@ -416,7 +416,7 @@ export async function getPlaceDetails(
     id: string
 ): Promise<PlaceDetailsResponse> {
     // add random delay
-    await new Promise((resolve) => setTimeout(resolve, Math.random() * 1000));
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 5000));
 
     const autoCompletePlace = autoCompleteData.suggestions.find(
         (place) => place.placePrediction.placeId === id

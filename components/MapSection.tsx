@@ -1,20 +1,40 @@
-import { Heart, MapPin, Phone, Star } from "lucide-react";
-import React from "react";
+import { Heart, MapPin } from "lucide-react";
+import React, { useEffect } from "react";
 import { Button } from "./ui/button";
 
 import MapImage from "@/assets/image/map_light.webp";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import {
+    usePlaceDetailsDispatch,
+    usePlaceDetailsSelector,
+} from "@/hooks/usePlaceDetails";
+import { fetchPlaceById } from "@/features/place/placeDetailsSlice";
 import { Place } from "@/types/Place";
+import PlaceDetailsSkeletonCard from "./PlaceDetailsSkeletonCard";
+import PlaceDetailsCard from "./PlaceDetailsCard";
 
-type Props = {
-    selectedPlace: Place | null;
-};
+const MapSection = () => {
+    const searchParams = useSearchParams();
+    const placeId = searchParams.get("id");
 
-const MapSection = ({ selectedPlace }: Props) => {
-    if (!selectedPlace) {
+    const dispatch = usePlaceDetailsDispatch();
+    const { data, loading, error } = usePlaceDetailsSelector(
+        (state) => state.placeDetails
+    );
+
+    useEffect(() => {
+        if (!placeId) {
+            return;
+        }
+
+        dispatch(fetchPlaceById(placeId));
+    }, [placeId, dispatch]);
+
+    if (!placeId) {
         return (
             <>
-                <MapHeader selectedPlace={selectedPlace} />
+                <MapHeader selectedPlace={data} />
                 <div className="w-full h-96 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
                     <div className="text-center text-gray-500">
                         <MapPin className="w-12 h-12 mx-auto mb-2 opacity-50" />
@@ -30,66 +50,38 @@ const MapSection = ({ selectedPlace }: Props) => {
         );
     }
 
+    if (error) return <p>Error: {error}</p>;
+    if (!data) return <p>No data found</p>;
+
     return (
         <>
-            <MapHeader selectedPlace={selectedPlace} />
+            <MapHeader selectedPlace={data} />
             <div className="w-full h-96 bg-gray-100 rounded-lg border overflow-hidden relative">
                 <Image
                     src={MapImage}
-                    alt={selectedPlace.name}
+                    alt={data.name}
                     className="w-full h-full object-cover"
                 />
-                <Button
-                    size="icon"
-                    variant="secondary"
-                    className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
-                >
-                    <Heart className="w-6 h-6 fill-red-500 text-red-500" />
-                </Button>
-
-                <div className="absolute bottom-4 left-4 w-1/2">
-                    <div className="bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/20">
-                        <h3 className="text-lg font-bold text-gray-900 mb-1">
-                            {selectedPlace.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-2 flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            {selectedPlace.address}
-                        </p>
-                        {selectedPlace.phoneNumber && (
-                            <p className="text-sm text-gray-600 mb-3 flex items-center gap-1">
-                                <Phone className="w-4 h-4" />
-                                {selectedPlace.phoneNumber}
-                            </p>
-                        )}
-                        <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                {selectedPlace.category}
-                            </span>
-                            {selectedPlace.rating && (
-                                <div className="flex items-center gap-1">
-                                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                                    <span className="text-sm font-medium text-gray-900">
-                                        {selectedPlace.rating}
-                                    </span>
-                                    {selectedPlace.ratingCount && (
-                                        <span className="text-xs text-gray-500">
-                                            (
-                                            {selectedPlace.ratingCount.toLocaleString()}
-                                            )
-                                        </span>
-                                    )}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
+                {!loading && (
+                    <Button
+                        size="icon"
+                        variant="secondary"
+                        className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
+                    >
+                        <Heart className="w-6 h-6 fill-red-500 text-red-500" />
+                    </Button>
+                )}
+                {loading ? (
+                    <PlaceDetailsSkeletonCard />
+                ) : (
+                    <PlaceDetailsCard data={data} />
+                )}
             </div>
         </>
     );
 };
 
-const MapHeader = ({ selectedPlace }: Props) => {
+const MapHeader = ({ selectedPlace }: { selectedPlace: Place | null }) => {
     return (
         <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
             <MapPin className="w-5 h-5" />
