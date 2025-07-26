@@ -6,6 +6,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { login } from "@/features/auth/authSlice";
+import { AuthCache } from "@/types/AuthUser";
 
 type Props = {
     isOpen: boolean;
@@ -13,25 +14,33 @@ type Props = {
 };
 
 function SignInModal({ isOpen, onClose }: Props) {
-    const [username, setUsername] = useState("");
+    const [usernameInput, setUsernameInput] = useState("");
     const [password, setPassword] = useState("");
 
     const dispatch = useAppDispatch();
-    const { loading, isAuthenticated, error } = useAppSelector(
+    const { loading, isAuthenticated, error, username, token } = useAppSelector(
         (state) => state.auth
     );
+
     useEffect(() => {
         if (isAuthenticated) {
-            setUsername("");
+            if (!username || !token) return;
+            const authCache: AuthCache = {
+                username,
+                token,
+            };
+
+            localStorage.setItem("auth", JSON.stringify(authCache));
+            setUsernameInput("");
             setPassword("");
             onClose();
         }
-    }, [isAuthenticated, onClose]);
+    }, [isAuthenticated, onClose, username, token]);
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        if (!username.trim() || !password.trim()) return;
-        dispatch(login({ username, password }));
+        if (!usernameInput.trim() || !password.trim()) return;
+        dispatch(login({ username: usernameInput, password }));
     };
 
     const handleBackdropClick = (e: {
@@ -72,8 +81,8 @@ function SignInModal({ isOpen, onClose }: Props) {
                             id="username"
                             type="text"
                             placeholder="Enter your username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={usernameInput}
+                            onChange={(e) => setUsernameInput(e.target.value)}
                             required
                             disabled={loading}
                         />
@@ -112,7 +121,9 @@ function SignInModal({ isOpen, onClose }: Props) {
                             type="submit"
                             className="flex-1"
                             disabled={
-                                loading || !username.trim() || !password.trim()
+                                loading ||
+                                !usernameInput.trim() ||
+                                !password.trim()
                             }
                         >
                             {loading ? (

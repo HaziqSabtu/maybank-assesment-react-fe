@@ -33,7 +33,7 @@ const Navbar = () => {
                             </span>
                         </div>
                     </div>
-                    {auth.isAuthenticated ? (
+                    {auth.isAuthenticated && !auth.loading ? (
                         <div className="flex items-center space-x-4">
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
@@ -54,7 +54,10 @@ const Navbar = () => {
                                     forceMount
                                 >
                                     <DropdownMenuItem
-                                        onClick={() => dispatch(logout())}
+                                        onClick={() => {
+                                            dispatch(logout());
+                                            localStorage.removeItem("auth");
+                                        }}
                                     >
                                         <span>Sign out</span>
                                     </DropdownMenuItem>
