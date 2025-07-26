@@ -13,6 +13,7 @@ import { useSearchParams } from "next/navigation";
 import { fetchItems } from "@/features/place/placeFavouritePageSlice";
 import FavouriteCard from "./FavouriteCard";
 import FavouriteSkeletonCard from "./FavouriteSkeletonCard";
+import SignInModal from "./SignInModal";
 
 const FavouriteSection = () => {
     const searchParams = useSearchParams();
@@ -25,31 +26,39 @@ const FavouriteSection = () => {
     const auth = useAppSelector((state) => state.auth);
 
     useEffect(() => {
+        if (!auth.isAuthenticated) return;
         dispatch(fetchItems(currentPage));
     }, [currentPage, dispatch, auth.isAuthenticated]);
 
     if (!auth.isAuthenticated) {
         return (
-            <div className="text-center py-12">
-                <div className="max-w-md mx-auto">
-                    <Heart className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                        Sign in to view your favorites
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                        Save and organize your favorite places to easily find
-                        them later. Create an account or sign in to get started.
-                    </p>
-                    <Button
-                        onClick={() => setShowSignInModal(true)}
-                        className="flex items-center gap-2 mx-auto"
-                        size="lg"
-                    >
-                        <User className="h-5 w-5" />
-                        Sign In to Continue
-                    </Button>
+            <>
+                <div className="text-center py-12">
+                    <div className="max-w-md mx-auto">
+                        <Heart className="w-16 h-16 mx-auto mb-4 text-gray-300" />
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                            Sign in to view your favorites
+                        </h3>
+                        <p className="text-gray-600 mb-6">
+                            Save and organize your favorite places to easily
+                            find them later. Create an account or sign in to get
+                            started.
+                        </p>
+                        <Button
+                            onClick={() => setShowSignInModal(true)}
+                            className="flex items-center gap-2 mx-auto"
+                            size="lg"
+                        >
+                            <User className="h-5 w-5" />
+                            Sign In to Continue
+                        </Button>
+                    </div>
                 </div>
-            </div>
+                <SignInModal
+                    isOpen={showSignInModal}
+                    onClose={() => setShowSignInModal(false)}
+                />
+            </>
         );
     }
 
@@ -74,8 +83,6 @@ const FavouriteSection = () => {
                     ))
                 )}
             </div>
-
-            {/* Pagination */}
             <Pagination>
                 <PaginationContent>
                     {hasPreviousPage && (
@@ -84,14 +91,8 @@ const FavouriteSection = () => {
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    if (currentPage > 1)
-                                        setCurrentPage(currentPage - 1);
+                                    setCurrentPage(currentPage - 1);
                                 }}
-                                className={
-                                    currentPage === 1
-                                        ? "pointer-events-none opacity-50"
-                                        : ""
-                                }
                             />
                         </PaginationItem>
                     )}
@@ -101,14 +102,8 @@ const FavouriteSection = () => {
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    if (currentPage < page.totalPages)
-                                        setCurrentPage(currentPage + 1);
+                                    setCurrentPage(currentPage + 1);
                                 }}
-                                className={
-                                    currentPage === page.totalPages
-                                        ? "pointer-events-none opacity-50"
-                                        : ""
-                                }
                             />
                         </PaginationItem>
                     )}
