@@ -1,6 +1,6 @@
 import { PlacePredictionResponse } from "@/types/PlaceApi";
 
-const data: PlacePredictionResponse = {
+export const data: PlacePredictionResponse = {
     suggestions: [
         {
             placePrediction: {
@@ -446,5 +446,3 @@ export async function getSuggestions(): Promise<PlacePredictionResponse> {
         suggestions,
     };
 }
-
-export default data;

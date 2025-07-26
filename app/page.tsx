@@ -1,8 +1,9 @@
 "use client";
-import MapSection, { Place } from "@/components/MapSection";
+import MapSection from "@/components/MapSection";
 import Navbar from "@/components/Navbar";
 import SearchBox from "@/components/SearchBox";
 import { useAutocomplete } from "@/hooks/useAutoComplete";
+import { Place } from "@/types/Place";
 import { useState } from "react";
 
 export default function PlacesApp() {
@@ -16,6 +17,8 @@ export default function PlacesApp() {
         rating: 4.5,
         latitude: 25.1234,
         longitude: 55.1234,
+        phoneNumber: "+971 4 8888888",
+        ratingCount: 100,
     };
 
     return (

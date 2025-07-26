@@ -30,7 +30,31 @@ export const PlacePredictionResponseSchema = z.object({
     ),
 });
 
+export const placeDetailsResponseSchema = z.object({
+    name: z.string(),
+    id: z.string(),
+    internationalPhoneNumber: z.string().optional(),
+    formattedAddress: z.string(),
+    location: z.object({
+        latitude: z.number(),
+        longitude: z.number(),
+    }),
+    rating: z.number().optional(),
+    userRatingCount: z.number().int().optional(),
+    displayName: z.object({
+        text: z.string(),
+        languageCode: z.string(),
+    }),
+    primaryTypeDisplayName: z
+        .object({
+            text: z.string(),
+            languageCode: z.string(),
+        })
+        .optional(),
+});
+
 export type PlacePrediction = z.infer<typeof PlacePredictionSchema>;
 export type PlacePredictionResponse = z.infer<
     typeof PlacePredictionResponseSchema
 >;
+export type PlaceDetailsResponse = z.infer<typeof placeDetailsResponseSchema>;
