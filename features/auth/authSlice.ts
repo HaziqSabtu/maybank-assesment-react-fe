@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "@/store";
+import { AuthApiResponseSchema } from "@/types/AuthApi";
 
 interface AuthState {
     isAuthenticated: boolean;
@@ -23,16 +24,39 @@ export const login = createAsyncThunk<
     { state: RootState }
 >("auth/login", async (credentials, thunkAPI) => {
     const { username, password } = credentials;
-    await new Promise((r) => setTimeout(r, 1000));
 
-    if (username === "admin" && password === "password") {
-        return {
-            username: "admin",
-            token: "token",
-        };
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    if (!backendUrl) {
+        return thunkAPI.rejectWithValue("Backend URL not set");
     }
 
-    return thunkAPI.rejectWithValue("Invalid credentials");
+    const url = new URL("/auth/login", backendUrl);
+
+    const response = await fetch(url.toString(), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username,
+            password,
+        }),
+    });
+
+    if (!response.ok) {
+        return thunkAPI.rejectWithValue("Invalid credentials");
+    }
+
+    const json = await response.json();
+    const parseResult = AuthApiResponseSchema.safeParse(json);
+    if (!parseResult.success) {
+        console.error(parseResult.error);
+        return thunkAPI.rejectWithValue("Invalid response format");
+    }
+
+    const { data } = parseResult;
+    return data;
 });
 
 const authSlice = createSlice({
