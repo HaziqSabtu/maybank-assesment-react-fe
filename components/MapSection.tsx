@@ -1,5 +1,5 @@
 import { Heart, MapPin } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 import MapImage from "@/assets/image/map_light.webp";
@@ -10,6 +10,7 @@ import { fetchPlaceById } from "@/features/place/placeDetailsSlice";
 import { Place } from "@/types/Place";
 import PlaceDetailsSkeletonCard from "./PlaceDetailsSkeletonCard";
 import PlaceDetailsCard from "./PlaceDetailsCard";
+import SignInModal from "./SignInModal";
 
 const MapSection = () => {
     const searchParams = useSearchParams();
@@ -19,6 +20,9 @@ const MapSection = () => {
     const { data, loading, error } = useAppSelector(
         (state) => state.placeDetails
     );
+    const { isAuthenticated } = useAppSelector((state) => state.auth);
+
+    const [showSignInModal, setShowSignInModal] = useState(false);
 
     useEffect(() => {
         if (!placeId) {
@@ -64,8 +68,17 @@ const MapSection = () => {
                         size="icon"
                         variant="secondary"
                         className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
+                        onClick={() => {
+                            if (!isAuthenticated) {
+                                setShowSignInModal(true);
+                            }
+                        }}
                     >
-                        <Heart className="w-6 h-6 fill-red-500 text-red-500" />
+                        {isAuthenticated ? (
+                            <Heart className="w-6 h-6 fill-red-500 text-red-500" />
+                        ) : (
+                            <Heart className="w-6 h-6 fill-gray-400 text-gray-400" />
+                        )}
                     </Button>
                 )}
                 {loading ? (
@@ -74,6 +87,10 @@ const MapSection = () => {
                     <PlaceDetailsCard data={data} />
                 )}
             </div>
+            <SignInModal
+                isOpen={showSignInModal}
+                onClose={() => setShowSignInModal(false)}
+            />
         </>
     );
 };
