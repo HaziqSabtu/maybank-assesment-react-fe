@@ -5,7 +5,6 @@ import {
     Pagination,
     PaginationContent,
     PaginationItem,
-    PaginationLink,
     PaginationNext,
     PaginationPrevious,
 } from "./ui/pagination";
@@ -15,38 +14,21 @@ import { fetchItems } from "@/features/place/placeFavouritePageSlice";
 import FavouriteCard from "./FavouriteCard";
 import FavouriteSkeletonCard from "./FavouriteSkeletonCard";
 
-type Props = {
-    isAuthenticated: boolean;
-};
-
-const FavouriteSection = ({ isAuthenticated }: Props) => {
+const FavouriteSection = () => {
     const searchParams = useSearchParams();
     const placeId = searchParams.get("id");
     const [showSignInModal, setShowSignInModal] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const dispatch = useAppDispatch();
-    const { content, page, loading } = useAppSelector(
-        (state) => state.placeFavourites
-    );
-
-    const selectedPlace = {
-        id: placeId,
-    };
-
-    const totalPage = page.totalPages;
+    const { content, page, loading, hasNextPage, hasPreviousPage } =
+        useAppSelector((state) => state.placeFavourites);
+    const auth = useAppSelector((state) => state.auth);
 
     useEffect(() => {
         dispatch(fetchItems(currentPage));
-    }, [currentPage, dispatch]);
+    }, [currentPage, dispatch, auth.isAuthenticated]);
 
-    const handlePageChange = (page: number) => {
-        if (page >= 1 && page <= totalPage) {
-            setCurrentPage(page);
-            // dispatch(fetchItems(page));
-        }
-    };
-
-    if (!isAuthenticated) {
+    if (!auth.isAuthenticated) {
         return (
             <div className="text-center py-12">
                 <div className="max-w-md mx-auto">
@@ -85,7 +67,7 @@ const FavouriteSection = ({ isAuthenticated }: Props) => {
                 ) : (
                     content.map((place) => (
                         <FavouriteCard
-                            isSelected={selectedPlace?.id === place.id}
+                            isSelected={placeId === place.id}
                             place={place}
                             key={place.id}
                         />
@@ -96,55 +78,40 @@ const FavouriteSection = ({ isAuthenticated }: Props) => {
             {/* Pagination */}
             <Pagination>
                 <PaginationContent>
-                    <PaginationItem>
-                        <PaginationPrevious
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (currentPage > 1)
-                                    setCurrentPage(currentPage - 1);
-                            }}
-                            className={
-                                currentPage === 1
-                                    ? "pointer-events-none opacity-50"
-                                    : ""
-                            }
-                        />
-                    </PaginationItem>
-
-                    {Array.from(
-                        { length: page.totalPages },
-                        (_, i) => i + 1
-                    ).map((page) => (
-                        <PaginationItem key={page}>
-                            <PaginationLink
+                    {hasPreviousPage && (
+                        <PaginationItem>
+                            <PaginationPrevious
                                 href="#"
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    setCurrentPage(page);
+                                    if (currentPage > 1)
+                                        setCurrentPage(currentPage - 1);
                                 }}
-                                isActive={currentPage === page}
-                            >
-                                {page}
-                            </PaginationLink>
+                                className={
+                                    currentPage === 1
+                                        ? "pointer-events-none opacity-50"
+                                        : ""
+                                }
+                            />
                         </PaginationItem>
-                    ))}
-
-                    <PaginationItem>
-                        <PaginationNext
-                            href="#"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (currentPage < page.totalPages)
-                                    setCurrentPage(currentPage + 1);
-                            }}
-                            className={
-                                currentPage === page.totalPages
-                                    ? "pointer-events-none opacity-50"
-                                    : ""
-                            }
-                        />
-                    </PaginationItem>
+                    )}
+                    {hasNextPage && (
+                        <PaginationItem>
+                            <PaginationNext
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (currentPage < page.totalPages)
+                                        setCurrentPage(currentPage + 1);
+                                }}
+                                className={
+                                    currentPage === page.totalPages
+                                        ? "pointer-events-none opacity-50"
+                                        : ""
+                                }
+                            />
+                        </PaginationItem>
+                    )}
                 </PaginationContent>
             </Pagination>
         </>

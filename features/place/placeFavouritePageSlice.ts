@@ -1,4 +1,4 @@
-import { getPlaceFavourites } from "@/temp/placeFavourites";
+import { RootState } from "@/store";
 import { PlaceFavouritesPaginated } from "@/types/Place";
 import {
     PaginatedPlaceFavouritesResponse,
@@ -9,6 +9,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export interface PlaceFavouritesState extends PlaceFavouritesPaginated {
     loading: boolean;
     error: string | null;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
 }
 
 const initialState: PlaceFavouritesState = {
@@ -21,16 +23,43 @@ const initialState: PlaceFavouritesState = {
     },
     loading: false,
     error: null,
+    hasNextPage: false,
+    hasPreviousPage: false,
 };
 
 export const fetchItems = createAsyncThunk<
     PlaceFavouritesPaginated,
     number,
-    { rejectValue: string }
->("items/fetchItems", async (page, { rejectWithValue }) => {
-    const data = await getPlaceFavourites();
+    { rejectValue: string; state: RootState }
+>("items/fetchItems", async (page, { rejectWithValue, getState }) => {
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-    const parseResult = paginatedPlaceFavouritesResponseSchema.safeParse(data);
+    if (!backendUrl) {
+        return rejectWithValue("Backend URL not set");
+    }
+
+    const token = getState().auth.token;
+    if (!token) {
+        console.error("Not authenticated");
+        return rejectWithValue("Not authenticated");
+    }
+
+    const url = new URL("/favourites", backendUrl);
+    url.searchParams.set("page", page.toString());
+
+    const response = await fetch(url.toString(), {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    if (!response.ok) {
+        return rejectWithValue("Failed to fetch favourites");
+    }
+
+    const json = await response.json();
+
+    const parseResult = paginatedPlaceFavouritesResponseSchema.safeParse(json);
     if (!parseResult.success) {
         console.error(parseResult.error);
         return rejectWithValue("Invalid response format");
@@ -55,6 +84,11 @@ const itemsSlice = createSlice({
                 state.page.size = action.payload.page.size;
                 state.page.number = action.payload.page.number;
                 state.page.totalElements = action.payload.page.totalElements;
+                state.page.totalPages = action.payload.page.totalPages;
+                state.hasNextPage =
+                    action.payload.page.number <
+                    action.payload.page.totalPages - 1;
+                state.hasPreviousPage = action.payload.page.number > 0;
             })
             .addCase(fetchItems.rejected, (state, action) => {
                 state.loading = false;
