@@ -2,6 +2,7 @@ import { MapPin, Search } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { PlaceSuggestion } from "@/types/Suggestion";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
     searchQuery: string;
@@ -17,6 +18,13 @@ const SearchBox = ({
     suggestions,
 }: Props) => {
     const [showSuggestion, setShowSuggestion] = useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
+
+    function handleSelectSuggestion(suggestion: PlaceSuggestion) {
+        const newUrl = pathname + "?id=" + suggestion.id;
+        router.push(newUrl);
+    }
 
     return (
         <div className="bg-white rounded-lg shadow-sm p-6">
@@ -53,7 +61,7 @@ const SearchBox = ({
                                     key={index}
                                     className="w-full text-left px-4 py-3 hover:bg-gray-50 border-b border-gray-100 last:border-b-0 flex items-start gap-3 transition-colors"
                                     onClick={() =>
-                                        console.log("suggestion clicked")
+                                        handleSelectSuggestion(suggestion)
                                     }
                                 >
                                     <MapPin className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
