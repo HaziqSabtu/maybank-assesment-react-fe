@@ -9,20 +9,9 @@ import {
     SearchHistoryEntry,
 } from "@/features/search/SearchHistorySlice";
 import { HistoryArraySchema } from "@/types/History";
+import { useAutocomplete } from "@/hooks/useAutoComplete";
 
-type Props = {
-    searchQuery: string;
-    setSearchQuery: (query: string) => void;
-    isSearching: boolean;
-    suggestions: PlaceSuggestion[];
-};
-
-const SearchBox = ({
-    searchQuery,
-    setSearchQuery,
-    isSearching,
-    suggestions,
-}: Props) => {
+const SearchBox = () => {
     const dispatch = useAppDispatch();
     const searchHistory = useAppSelector(
         (state) => state.searchHistory.entries
@@ -30,6 +19,9 @@ const SearchBox = ({
     const [showSuggestion, setShowSuggestion] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const { suggestions, loading } = useAutocomplete(searchQuery);
 
     useEffect(() => {
         const history = loadFromCache();
@@ -71,7 +63,7 @@ const SearchBox = ({
                     className="pl-10 pr-4 py-3 text-lg"
                 />
 
-                {isSearching && (
+                {loading && (
                     <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-400"></div>
                     </div>
