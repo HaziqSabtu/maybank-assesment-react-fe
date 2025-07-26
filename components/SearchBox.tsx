@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Input } from "./ui/input";
 import { PlaceSuggestion } from "@/types/Suggestion";
 import { usePathname, useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/hooks/useSeachHistory";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
     saveToHistory,
     SearchHistoryEntry,

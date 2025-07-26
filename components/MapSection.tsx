@@ -5,10 +5,7 @@ import { Button } from "./ui/button";
 import MapImage from "@/assets/image/map_light.webp";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import {
-    usePlaceDetailsDispatch,
-    usePlaceDetailsSelector,
-} from "@/hooks/usePlaceDetails";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchPlaceById } from "@/features/place/placeDetailsSlice";
 import { Place } from "@/types/Place";
 import PlaceDetailsSkeletonCard from "./PlaceDetailsSkeletonCard";
@@ -18,8 +15,8 @@ const MapSection = () => {
     const searchParams = useSearchParams();
     const placeId = searchParams.get("id");
 
-    const dispatch = usePlaceDetailsDispatch();
-    const { data, loading, error } = usePlaceDetailsSelector(
+    const dispatch = useAppDispatch();
+    const { data, loading, error } = useAppSelector(
         (state) => state.placeDetails
     );
 
