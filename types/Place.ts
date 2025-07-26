@@ -9,3 +9,21 @@ export interface Place {
     longitude: number;
     phoneNumber: string | null;
 }
+
+export interface PlaceFavourite {
+    id: string;
+    name: string;
+    address: string | null;
+    category: string | null;
+    createdAt: string;
+}
+
+export interface PlaceFavouritesPaginated {
+    content: PlaceFavourite[];
+    page: {
+        size: number;
+        number: number;
+        totalElements: number;
+        totalPages: number;
+    };
+}

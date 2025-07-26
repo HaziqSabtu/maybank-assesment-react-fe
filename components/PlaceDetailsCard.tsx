@@ -24,9 +24,11 @@ const PlaceDetailsCard = ({ data }: Props) => {
                     </p>
                 )}
                 <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        {data.category}
-                    </span>
+                    {data.category && (
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                            {data.category}
+                        </span>
+                    )}
                     {data.rating && (
                         <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />

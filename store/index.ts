@@ -1,5 +1,6 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import placeDetailsReducer from "@/features/place/placeDetailsSlice";
+import placeFavouritesReducer from "@/features/place/placeFavouritePageSlice";
 import searchHistoryReducer from "@/features/search/SearchHistorySlice";
 import authReducer from "@/features/auth/authSlice";
 
@@ -8,6 +9,7 @@ export const store = configureStore({
         auth: authReducer,
         searchHistory: searchHistoryReducer,
         placeDetails: placeDetailsReducer,
+        placeFavourites: placeFavouritesReducer,
     },
 });
 
