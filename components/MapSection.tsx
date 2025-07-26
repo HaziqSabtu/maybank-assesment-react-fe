@@ -31,7 +31,8 @@ const MapSection = () => {
         dispatch(fetchPlaceById(placeId));
     }, [placeId, dispatch]);
 
-    if (!placeId) {
+    // TODO: better handling in this area
+    if (!placeId || !data) {
         return (
             <>
                 <MapHeader selectedPlace={data} />
@@ -51,7 +52,6 @@ const MapSection = () => {
     }
 
     if (error) return <p>Error: {error}</p>;
-    if (!data) return <p>No data found</p>;
 
     return (
         <>
