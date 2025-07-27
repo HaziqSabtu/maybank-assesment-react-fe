@@ -3,7 +3,8 @@
 import { setAuth } from "@/features/auth/authSlice";
 import { store } from "@/store";
 import { AuthCacheSchema } from "@/types/AuthUser";
-import { useEffect } from "react";
+import { APIProvider } from "@vis.gl/react-google-maps";
+import { Suspense, useEffect } from "react";
 import { Provider } from "react-redux";
 
 export default function ClientLayout({
@@ -24,5 +25,9 @@ export default function ClientLayout({
         }
     }, []);
 
-    return <Provider store={store}>{children}</Provider>;
+    return (
+        <Provider store={store}>
+            <Suspense>{children}</Suspense>
+        </Provider>
+    );
 }
