@@ -30,11 +30,9 @@ export default function ClientLayout({
             apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string}
             libraries={["marker"]}
         >
-            (
             <Provider store={store}>
                 <Suspense>{children}</Suspense>
             </Provider>
-            );
         </APIProvider>
     );
 }
