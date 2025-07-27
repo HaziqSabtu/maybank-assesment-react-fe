@@ -64,6 +64,7 @@ export const fetchItems = createAsyncThunk<
 
     const url = new URL("/places", backendUrl);
     url.searchParams.set("page", page.toString());
+    url.searchParams.set("size", "6");
 
     const response = await fetch(url.toString(), {
         headers: {
