@@ -1,5 +1,4 @@
 import { RootState } from "@/store";
-import { getPlaceDetails } from "@/temp/placedetails";
 import { Place } from "@/types/Place";
 import {
     PlaceDetailsResponse,
@@ -143,7 +142,7 @@ const placeSlice = createSlice({
 function mapperToPlace(place: PlaceDetailsResponse): Place {
     return {
         id: place.id,
-        name: place.name,
+        name: place.displayName.text,
         address: place.formattedAddress,
         category: place.primaryTypeDisplayName?.text || null,
         rating: place.rating || null,
@@ -177,7 +176,28 @@ async function getIsPlaceLiked(
 }
 
 async function getPlaceDetailsData(id: string): Promise<Place> {
-    const json = await getPlaceDetails(id);
+    const placeApiUrl = `
+        https://places.googleapis.com/v1/places/${id}?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+    `;
+
+    const headers = {
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string,
+        "X-Goog-FieldMask":
+            "name,id,displayName,primaryTypeDisplayName,internationalPhoneNumber,formattedAddress,rating,userRatingCount,location",
+    };
+
+    const response = await fetch(placeApiUrl, {
+        method: "GET",
+        headers,
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch place details");
+    }
+
+    const json = await response.json();
+
     const parseResult = placeDetailsResponseSchema.safeParse(json);
     if (!parseResult.success) {
         console.error(parseResult.error);
