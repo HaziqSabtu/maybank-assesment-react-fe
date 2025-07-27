@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import useDebounce from "./useDebounce";
-import { PlacePrediction } from "@/types/PlaceApi";
-import { getSuggestions } from "@/temp/autocomplete";
+import {
+    PlacePrediction,
+    PlacePredictionResponseSchema,
+} from "@/types/PlaceApi";
 import { PlaceSuggestion } from "@/types/Suggestion";
 
 type AutocompleteResult = {
@@ -28,11 +30,33 @@ export function useAutocomplete(input: string): AutocompleteResult {
         setLoading(true);
         setError(null);
 
-        getSuggestions()
+        const url = "https://places.googleapis.com/v1/places:autocomplete";
+
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append(
+            "X-Goog-API-Key",
+            process.env.NEXT_PUBLIC_GOOGLE_API_KEY as string
+        );
+
+        fetch(url, {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+                input: debouncedInput,
+            }),
+        })
+            .then((res) => res.json())
             .then((data) => {
+                const parsed = PlacePredictionResponseSchema.safeParse(data);
+
+                if (!parsed.success) {
+                    throw parsed.error;
+                }
+
                 if (requestIdRef.current === currentRequestId) {
-                    const suggestions = data.suggestions.map((suggestion) =>
-                        mapper(suggestion.placePrediction)
+                    const suggestions = parsed.data.suggestions.map((s) =>
+                        mapper(s.placePrediction)
                     );
                     setSuggestions(suggestions);
                 }
