@@ -10,26 +10,73 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const CACHE_DURATION_MS = 1000 * 60 * 5;
 
 export const fetchPlaceById = createAsyncThunk<
-    Place,
+    PlaceWithLike,
     string,
     { state: RootState }
->("place/fetchById", async (id: string, thunkAPI) => {
-    const cached = thunkAPI.getState().placeDetails.cache[id];
+>("place/fetchById", async (id, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    const cached = state.placeDetails.cache[id];
     const now = Date.now();
 
-    if (cached && now - cached.timestamp < CACHE_DURATION_MS) {
-        return cached.data;
-    }
+    try {
+        if (cached && now - cached.timestamp < CACHE_DURATION_MS) {
+            const isLiked = await getIsPlaceLiked(id, token);
+            return { ...cached.data, isLiked };
+        }
 
-    const json = await getPlaceDetails(id);
-    const parseResult = placeDetailsResponseSchema.safeParse(json);
-    if (!parseResult.success) {
-        console.error(parseResult.error);
-        return thunkAPI.rejectWithValue("Invalid response format");
-    }
+        const [placeDetails, isLiked] = await Promise.all([
+            getPlaceDetailsData(id),
+            getIsPlaceLiked(id, token),
+        ]);
 
-    return mapperToPlace(parseResult.data);
+        return { ...placeDetails, isLiked };
+    } catch (error) {
+        console.error("Failed to fetch place or isLiked:", error);
+        return thunkAPI.rejectWithValue("Failed to fetch place");
+    }
 });
+
+export const togglePlaceFavourite = createAsyncThunk<
+    { placeId: string; isFavourite: boolean },
+    { place: Place; liked: boolean },
+    { state: RootState }
+>("place/toggleFavourite", async ({ place, liked }, thunkAPI) => {
+    const token = thunkAPI.getState().auth.token;
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    try {
+        const url = `${backendUrl}/places`;
+        const method = !liked ? "POST" : "DELETE";
+
+        const body = JSON.stringify({
+            id: place.id,
+            name: place.name,
+            address: place.address,
+            category: place.category,
+        });
+
+        const response = await fetch(url, {
+            method,
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body,
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to update favourite");
+        }
+
+        return { placeId: place.id, isFavourite: !liked };
+    } catch (error) {
+        console.error("Failed to update favourite:", error);
+        return thunkAPI.rejectWithValue("Unable to update favourite");
+    }
+});
+
+type PlaceWithLike = Place & { isLiked: boolean };
 
 interface CachedPlace {
     data: Place;
@@ -37,7 +84,7 @@ interface CachedPlace {
 }
 
 interface PlaceState {
-    data: Place | null;
+    data: PlaceWithLike | null;
     loading: boolean;
     error: string | null;
     cache: Record<string, CachedPlace>;
@@ -76,6 +123,19 @@ const placeSlice = createSlice({
                     (action.payload as string) ||
                     action.error.message ||
                     "Unknown error";
+            })
+            .addCase(togglePlaceFavourite.fulfilled, (state, action) => {
+                const { placeId, isFavourite } = action.payload;
+                const cached = state.cache[placeId];
+
+                if (!cached) {
+                    return;
+                }
+
+                state.data = {
+                    ...cached.data,
+                    isLiked: isFavourite,
+                };
             });
     },
 });
@@ -92,6 +152,39 @@ function mapperToPlace(place: PlaceDetailsResponse): Place {
         longitude: place.location.longitude,
         phoneNumber: place.internationalPhoneNumber || null,
     };
+}
+
+async function getIsPlaceLiked(
+    id: string,
+    token: string | null
+): Promise<boolean> {
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    if (!backendUrl || !token) return false;
+
+    try {
+        const url = new URL(`/places/${id}`, backendUrl);
+        const response = await fetch(url.toString(), {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        return response.ok;
+    } catch (e) {
+        console.error(e);
+        return false;
+    }
+}
+
+async function getPlaceDetailsData(id: string): Promise<Place> {
+    const json = await getPlaceDetails(id);
+    const parseResult = placeDetailsResponseSchema.safeParse(json);
+    if (!parseResult.success) {
+        console.error(parseResult.error);
+        throw new Error("Invalid response format");
+    }
+
+    return mapperToPlace(parseResult.data);
 }
 
 export default placeSlice.reducer;

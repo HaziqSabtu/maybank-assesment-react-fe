@@ -27,6 +27,24 @@ const initialState: PlaceFavouritesState = {
     hasPreviousPage: false,
 };
 
+export const refetchCurrentPage = createAsyncThunk<
+    void,
+    void,
+    { state: RootState; rejectValue: string }
+>(
+    "items/refetchCurrentPage",
+    async (_, { getState, dispatch, rejectWithValue }) => {
+        const currentPage = getState().placeFavourites.page.number;
+
+        try {
+            await dispatch(fetchItems(currentPage)).unwrap();
+        } catch (err) {
+            console.error(err);
+            return rejectWithValue("Failed to refetch current page");
+        }
+    }
+);
+
 export const fetchItems = createAsyncThunk<
     PlaceFavouritesPaginated,
     number,

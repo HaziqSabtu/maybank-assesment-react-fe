@@ -6,11 +6,15 @@ import MapImage from "@/assets/image/map_light.webp";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { fetchPlaceById } from "@/features/place/placeDetailsSlice";
+import {
+    fetchPlaceById,
+    togglePlaceFavourite,
+} from "@/features/place/placeDetailsSlice";
 import { Place } from "@/types/Place";
 import PlaceDetailsSkeletonCard from "./PlaceDetailsSkeletonCard";
 import PlaceDetailsCard from "./PlaceDetailsCard";
 import SignInModal from "./SignInModal";
+import { refetchCurrentPage } from "@/features/place/placeFavouritePageSlice";
 
 const MapSection = () => {
     const searchParams = useSearchParams();
@@ -32,6 +36,10 @@ const MapSection = () => {
         dispatch(fetchPlaceById(placeId));
     }, [placeId, dispatch]);
 
+    useEffect(() => {
+        dispatch(refetchCurrentPage());
+    }, [data?.isLiked, dispatch]);
+
     // TODO: better handling in this area
     if (!placeId || !data) {
         return (
@@ -52,6 +60,15 @@ const MapSection = () => {
         );
     }
 
+    function handleUnauthenticatedLikedButtonClick() {
+        setShowSignInModal(true);
+    }
+
+    function handleAuthenticatedLikedButtonClick() {
+        if (!data) return;
+        dispatch(togglePlaceFavourite({ place: data, liked: data.isLiked }));
+    }
+
     if (error) return <p>Error: {error}</p>;
 
     return (
@@ -64,22 +81,18 @@ const MapSection = () => {
                     className="w-full h-full object-cover"
                 />
                 {!loading && (
-                    <Button
-                        size="icon"
-                        variant="secondary"
-                        className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
-                        onClick={() => {
-                            if (!isAuthenticated) {
-                                setShowSignInModal(true);
-                            }
-                        }}
-                    >
+                    <>
                         {isAuthenticated ? (
-                            <Heart className="w-6 h-6 fill-red-500 text-red-500" />
+                            <AuthenticatedLikedButton
+                                isLiked={data.isLiked}
+                                onClick={handleAuthenticatedLikedButtonClick}
+                            />
                         ) : (
-                            <Heart className="w-6 h-6 fill-gray-400 text-gray-400" />
+                            <UnauthenticatedLikedButton
+                                onClick={handleUnauthenticatedLikedButtonClick}
+                            />
                         )}
-                    </Button>
+                    </>
                 )}
                 {loading ? (
                     <PlaceDetailsSkeletonCard />
@@ -106,6 +119,42 @@ const MapHeader = ({ selectedPlace }: { selectedPlace: Place | null }) => {
                 </span>
             )}
         </h2>
+    );
+};
+
+const UnauthenticatedLikedButton = ({ onClick }: { onClick: () => void }) => {
+    return (
+        <Button
+            size="icon"
+            variant="secondary"
+            className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
+            onClick={onClick}
+        >
+            <Heart className="w-6 h-6 fill-gray-400 text-gray-400" />
+        </Button>
+    );
+};
+
+const AuthenticatedLikedButton = ({
+    isLiked,
+    onClick,
+}: {
+    isLiked: boolean;
+    onClick: () => void;
+}) => {
+    return (
+        <Button
+            size="icon"
+            variant="secondary"
+            className="absolute top-4 right-4 w-12 h-12 shadow-lg hover:shadow-xl transition-shadow"
+            onClick={onClick}
+        >
+            {isLiked ? (
+                <Heart className="w-6 h-6 fill-red-500 text-red-500" />
+            ) : (
+                <Heart className="w-6 h-6 fill-gray-400 text-gray-400" />
+            )}
+        </Button>
     );
 };
 
