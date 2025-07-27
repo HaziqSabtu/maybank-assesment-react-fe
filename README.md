@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 Maybank Assessment - React Frontend
 
-## Getting Started
+A scalable and modern web app built with **Next.js**, **TypeScript**, and **Redux Toolkit**, allowing users to search for locations using **Google Places Autocomplete**, view them on a map, track search history, and mark favorite places via an optional backend API.
 
-First, run the development server:
+The project is live at [https://maybank-assesment-react-fe.vercel.app/](https://maybank-assesment-react-fe.vercel.app/) (Will be taken down in 1 week).
+
+-   For login, use username `user1` and password `password123`.
+-   Backend might be a bit slow, running on free tier.
+
+## ✨ Features
+
+-   🔍 Google Places **Autocomplete** with real-time suggestions.
+-   🗺️ Display selected location on an interactive **Google Map**.
+-   🧠 Track and persist **search history** using Redux Toolkit.
+-   ⭐ Mark places as **favorites** (triggering a web service call to Java Spring Boot backend).
+-   🎨 Built with **Tailwind CSS** and **shadcn/ui** for clean, accessible UI components.
+-   🧩 Modular and scalable architecture using **React hooks**, **functional components**, and **Redux Thunk** middleware.
+
+## 🛠 Tech Stack
+
+-   Framework: Next.js (App Router)
+-   Language: TypeScript
+-   State Management: Redux Toolkit, Redux Thunk
+-   UI: Tailwind CSS, shadcn/ui
+-   Map Integration: Places API
+-   Backend (Optional): Java Spring Boot
+
+## ⚙️ Setup Instructions
+
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Google Maps API key
+
+Create a `.env.local` file in the root directory:
+
+```
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+NEXT_PUBLIC_BACKEND_URL=http://localhost:8080 (or your backend url)
+```
+
+Don't have a Google Maps API key? Try the deployed version at [Vercel](https://maybank-assesment-react-fe.vercel.app/)
+
+Make sure the following Google Cloud APIs are enabled if you use your own key:
+
+-   Maps JavaScript API
+-   Places API
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. (Optional) Run the backend server
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This part is optional, but recommended to be able to save favorites. [see README](https://github.com/HaziqSabtu/maybank-assesment-spring-be).
