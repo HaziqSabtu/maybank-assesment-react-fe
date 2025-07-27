@@ -21,8 +21,9 @@ const FavouriteSection = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(0);
     const dispatch = useAppDispatch();
-    const { content, page, loading, hasNextPage, hasPreviousPage } =
-        useAppSelector((state) => state.placeFavourites);
+    const { content, loading, hasNextPage, hasPreviousPage } = useAppSelector(
+        (state) => state.placeFavourites
+    );
     const auth = useAppSelector((state) => state.auth);
 
     useEffect(() => {
