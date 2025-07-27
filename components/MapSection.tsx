@@ -2,8 +2,6 @@ import { Heart, MapPin } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
-import MapImage from "@/assets/image/map_light.webp";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
@@ -15,6 +13,7 @@ import PlaceDetailsSkeletonCard from "./PlaceDetailsSkeletonCard";
 import PlaceDetailsCard from "./PlaceDetailsCard";
 import SignInModal from "./SignInModal";
 import { refetchCurrentPage } from "@/features/place/placeFavouritePageSlice";
+import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 
 const MapSection = () => {
     const searchParams = useSearchParams();
@@ -75,11 +74,18 @@ const MapSection = () => {
         <>
             <MapHeader selectedPlace={data} />
             <div className="w-full h-96 bg-gray-100 rounded-lg border overflow-hidden relative">
-                <Image
-                    src={MapImage}
-                    alt={data.name}
-                    className="w-full h-full object-cover"
-                />
+                <Map
+                    center={{ lat: data.latitude, lng: data.longitude }}
+                    zoom={12}
+                    gestureHandling={"none"}
+                    mapId={"DEMO_MAP_ID"}
+                    disableDefaultUI
+                >
+                    <AdvancedMarker
+                        style={{ zIndex: 1000 }}
+                        position={{ lat: data.latitude, lng: data.longitude }}
+                    />
+                </Map>
                 {!loading && (
                     <>
                         {isAuthenticated ? (

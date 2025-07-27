@@ -2,7 +2,7 @@ import React from "react";
 
 const PlaceDetailsSkeletonCard = () => {
     return (
-        <div className="absolute bottom-4 left-4 w-1/2">
+        <div className="absolute bottom-4 left-4 w-2/5">
             <div className="bg-white/95 backdrop-blur-md rounded-lg p-4 shadow-lg border border-white/20">
                 <div className="animate-pulse">
                     <div className="h-5 bg-gray-300 rounded mb-2"></div>

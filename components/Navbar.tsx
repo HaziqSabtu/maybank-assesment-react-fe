@@ -27,7 +27,12 @@ const Navbar = () => {
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 flex items-center">
-                            <MapPin className="h-8 w-8 text-yellow-600" />
+                            <MapPin
+                                className="w-8 h-8"
+                                fill="#FFCC00"
+                                strokeWidth={2}
+                                color="#000000"
+                            />
                             <span className="ml-2 text-xl font-bold text-gray-900">
                                 Map Autocomplete
                             </span>
