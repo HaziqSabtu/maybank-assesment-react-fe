@@ -38,7 +38,7 @@ npm install
 Create a `.env.local` file in the root directory:
 
 ```
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+NEXT_PUBLIC_GOOGLE_API_KEY=your_google_maps_api_key
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8080 (or your backend url)
 ```
 
