@@ -21,7 +21,7 @@ export default function PlacesApp() {
                             Favorite Places
                         </h2>
                     </div>
-                    <FavouriteSection isAuthenticated={true} />
+                    <FavouriteSection />
                 </div>
             </div>
         </div>

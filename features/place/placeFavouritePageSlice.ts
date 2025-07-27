@@ -44,7 +44,7 @@ export const fetchItems = createAsyncThunk<
         return rejectWithValue("Not authenticated");
     }
 
-    const url = new URL("/favourites", backendUrl);
+    const url = new URL("/places", backendUrl);
     url.searchParams.set("page", page.toString());
 
     const response = await fetch(url.toString(), {
